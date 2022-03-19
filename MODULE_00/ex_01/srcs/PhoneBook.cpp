@@ -35,6 +35,12 @@ void	PhoneBook::AddContact(Contact* contact)
 
 void	PhoneBook::DisplayContactList()
 {
+	if (_contacts_count == 0)
+	{
+		std::cout << "Nothing to show yet! Add a contact" << std::endl;
+	}
+
+	// Можно было бы табличку сохранить до следующего обновления
 	ContactTableBuilder	*contactTableBuilder = new ContactTableBuilder();
 
 	for (int i = 0; i < _contacts_count; i++)
@@ -42,10 +48,16 @@ void	PhoneBook::DisplayContactList()
 		contactTableBuilder->AddContactToTable(_contacts[i]);
 	}
 	contactTableBuilder->DisplayContactTable();
+
 	delete contactTableBuilder;
 }
 
-void	PhoneBook::GetContactAtIndex(int index)
+void	PhoneBook::PrintContactAtIndex(int index)
 {
-	Contact *contact = _contacts[index - 1];
+	if (index > _contacts_count)
+	{
+		std::cout << "Wrong index! Try again!" << std::endl;
+	}
+
+	Contact *contact = _contacts[index];
 }

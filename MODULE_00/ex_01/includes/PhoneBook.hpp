@@ -14,7 +14,7 @@ private:
 public:
 	void	AddContact(Contact* contact);
 	void	DisplayContactList();
-	void	GetContactAtIndex(int idex);
+	void	PrintContactAtIndex(int idex);
 };
 
 #endif

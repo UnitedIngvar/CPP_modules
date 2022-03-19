@@ -29,7 +29,7 @@ std::string		ContactTableBuilder::CreateCell(std::string cell_text)
 std::string	ContactTableBuilder::AddContactToTable(Contact *contact)
 {
 	_table[_rows_count] =
-	CreateCell(std::to_string(_rows_count + 1)) + " | " +
+	CreateCell(std::to_string(_rows_count)) + " | " +
 	CreateCell(contact->GetFirstName()) + " | " +
 	CreateCell(contact->GetLastName()) + " | " +
 	CreateCell(contact->GetNickname()) + std::endl;
