@@ -1,11 +1,11 @@
 #include "Contact.hpp"
 
 Contact::Contact(int id,
-			string first_name,
-			string last_name,
-			string nickname,
-			string phone_number,
-			string darkest_secret)
+			std::string first_name,
+			std::string last_name,
+			std::string nickname,
+			std::string phone_number,
+			std::string darkest_secret)
 {
 	_first_name = first_name;
 	_last_name = last_name;
@@ -14,12 +14,12 @@ Contact::Contact(int id,
 	_darkest_secret = darkest_secret;
 }
 
-string	Contact::GetFirstName(){ return _first_name; }
+std::string	Contact::GetFirstName(){ return _first_name; }
 
-string	Contact::GetLastName(){ return _last_name; }
+std::string	Contact::GetLastName(){ return _last_name; }
 
-string	Contact::GetNickname(){ return _nickname; }
+std::string	Contact::GetNickname(){ return _nickname; }
 
-string	Contact::GetPhoneNumber(){ return _phone_number; }
+std::string	Contact::GetPhoneNumber(){ return _phone_number; }
 
-string	Contact::GetDarkestSecret(){ return _darkest_secret; }
+std::string	Contact::GetDarkestSecret(){ return _darkest_secret; }
