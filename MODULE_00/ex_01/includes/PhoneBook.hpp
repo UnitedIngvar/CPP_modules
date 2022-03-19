@@ -5,7 +5,12 @@
 class PhoneBook
 {
 private:
-	Contact[]	contacts;
+	int		_contacts_count;
+	int		_oldest_contact_index;
+	Contact	*_contacts[8];
+
+	void	ReplaceOldestContact(Contact *contact);
+
 public:
 	PhoneBook();
 

@@ -2,29 +2,31 @@
 #define CONTACT_H
 #include <string>
 
+using namespace std;
+
 class Contact
 {
 private:
-	int			id;
-	std::string	first_name;
-	std::string	last_name;
-	std::string	nickname;
-	std::string	phone_number;
-	std::string	darkest_secret;
+	int			_id;
+	string	_first_name;
+	string	_last_name;
+	string	_nickname;
+	string	_phone_number;
+	string	_darkest_secret;
 
 public:
 	Contact(int id,
-			std::string first_name,
-			std::string last_name,
-			std::string nickname,
-			std::string phone_number,
-			std::string darkest_secret);
+			string first_name,
+			string last_name,
+			string nickname,
+			string phone_number,
+			string darkest_secret);
 
-	std::string	GetFirstName();
-	std::string	GetLastName();
-	std::string	GetNickname();
-	std::string	GetPhoneNumber();
-	std::string	GetDarkestSecret();
+	string	GetFirstName();
+	string	GetLastName();
+	string	GetNickname();
+	string	GetPhoneNumber();
+	string	GetDarkestSecret();
 };
 
 #endif

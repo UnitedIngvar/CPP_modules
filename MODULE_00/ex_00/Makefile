@@ -20,7 +20,7 @@ all	: 	$(NAME)
 $(NAME): $(OBJECTS)
 		$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
 
-%.o : %.c
+%.o : %.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
 
 
