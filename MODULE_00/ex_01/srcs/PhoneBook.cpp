@@ -1,5 +1,5 @@
 #include "includes/PhoneBook.hpp"
-#include "includes/ContactTable.hpp"
+#include "includes/ContactTableBuilder.hpp"
 #include <iostream>
 
 PhoneBook::PhoneBook()
@@ -24,7 +24,7 @@ void	PhoneBook::AddContact(Contact* contact)
 {
 	if (_contacts_count < 8)
 	{
-		_contacts[_contacts_count - 1] = contact;
+		_contacts[_contacts_count] = contact;
 		_contacts_count++;
 	}
 	else
@@ -35,16 +35,17 @@ void	PhoneBook::AddContact(Contact* contact)
 
 void	PhoneBook::DisplayContactList()
 {
-	ContactTable	*contactTable = new ContactTable();
+	ContactTableBuilder	*contactTableBuilder = new ContactTableBuilder();
 
 	for (int i = 0; i < _contacts_count; i++)
 	{
-		contactTable->AddContactToTable(_contacts[i]);
+		contactTableBuilder->AddContactToTable(_contacts[i]);
 	}
-	contactTable->DisplayContactTable();
+	contactTableBuilder->DisplayContactTable();
+	delete contactTableBuilder;
 }
 
-void	PhoneBook::GetContactAtIndex(int idex)
+void	PhoneBook::GetContactAtIndex(int index)
 {
-
+	Contact *contact = _contacts[index - 1];
 }

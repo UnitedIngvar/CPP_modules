@@ -4,17 +4,19 @@
 #include "includes/Contact.hpp"
 
 
-class ContactTable
+class ContactTableBuilder
 {
 private:
 	int		_rows_count;
-	string	_table[8][40];
+	string	_table[8];
+
+	std::string	CreateCell(std::string cell_text);
 
 public:
-	ContactTable();
+	ContactTableBuilder();
 
 	std::string	AddContactToTable(Contact *contact);
-	std::string	DisplayContactTable();
+	void		DisplayContactTable();
 };
 
 #endif
