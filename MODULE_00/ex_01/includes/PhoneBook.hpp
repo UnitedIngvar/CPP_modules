@@ -11,7 +11,7 @@ public:
 
 	void	AddContact(Contact* contact);
 	void	DisplayContactList();
-	void	GetContactAtIndex();
+	void	GetContactAtIndex(int idex);
 };
 
 #endif
