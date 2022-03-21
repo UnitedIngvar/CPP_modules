@@ -1,5 +1,5 @@
-#include "includes/PhoneBook.hpp"
-#include "includes/ContactTableBuilder.hpp"
+#include "PhoneBook.hpp"
+#include "ContactTableBuilder.hpp"
 #include <iostream>
 
 PhoneBook::PhoneBook()
@@ -53,12 +53,13 @@ void	PhoneBook::DisplayContactList()
 	delete contactTableBuilder;
 }
 
-void	PhoneBook::PrintContactAtIndex(int index)
+bool	PhoneBook::PrintContactAtIndex(int index)
 {
 	if (index > _contacts_count)
 	{
-		std::cout << "Wrong index! Try again!" << std::endl;
+		return false;
 	}
 
-	Contact *contact = _contacts[index];
+	_contacts[index]->Print();
+	return true;
 }

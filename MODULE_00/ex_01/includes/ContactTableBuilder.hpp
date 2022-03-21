@@ -1,7 +1,7 @@
 #ifndef CONTACTTABLE_H
 # define CONTACTTABLE_H
 # include <string>
-# include "includes/Contact.hpp"
+# include "Contact.hpp"
 
 class ContactTableBuilder
 {
@@ -14,7 +14,7 @@ private:
 public:
 	ContactTableBuilder();
 
-	std::string	AddContactToTable(Contact *contact);
+	void		AddContactToTable(Contact *contact);
 	void		DisplayContactTable();
 };
 

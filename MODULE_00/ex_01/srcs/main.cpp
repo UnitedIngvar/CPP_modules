@@ -1,16 +1,10 @@
-#include "includes/PhoneBook.hpp"
+#include "PhoneBookTerminal.hpp"
+#include <iostream>
 
 int	main(void)
 {
-	std::string	command;
+	PhoneBookTerminal *terminal = new PhoneBookTerminal();
 
-	while (true)
-	{
-		std::cout << "Type a command [ADD, SEARCH]: "; // Type a number and press enter
-		std::cin >> command; // Get user input from the keyboard
-		if (command.compare("ADD") == 0)
-		{
-			PhoneBook->AddContact();
-		}
-	}
+	terminal->StartTerminal();
+	delete terminal;
 }

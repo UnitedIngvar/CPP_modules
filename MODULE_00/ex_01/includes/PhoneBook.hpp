@@ -12,9 +12,11 @@ private:
 	void	ReplaceOldestContact(Contact *contact);
 
 public:
+	PhoneBook();
+
 	void	AddContact(Contact *contact);
 	void	DisplayContactList();
-	void	PrintContactAtIndex(int idex);
+	bool	PrintContactAtIndex(int idex);
 };
 
 #endif

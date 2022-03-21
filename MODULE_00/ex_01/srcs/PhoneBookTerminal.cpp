@@ -1,6 +1,6 @@
-#include "includes/PhoneBookTerminal.hpp"
-#include "includes/Contact.hpp"
-#include "includes/StringChecker.hpp"
+#include "PhoneBookTerminal.hpp"
+#include "Contact.hpp"
+#include "StringChecker.hpp"
 #include <string>
 #include <iostream>
 
@@ -9,7 +9,7 @@ PhoneBookTerminal::PhoneBookTerminal()
 	_phone_book = new PhoneBook();
 }
 
-std::string	PromptForInput(std::string prompt)
+std::string	PhoneBookTerminal::PromptForInput(std::string prompt)
 {
 	std::string	input;
 
@@ -24,19 +24,32 @@ std::string	PromptForInput(std::string prompt)
 	return input;
 }
 
-Contact	*CreateContact()
+Contact	*PhoneBookTerminal::CreateContact()
 {
-	std::string	firstName;
-	std::string	lastName;
-	std::string	nickname;
-	std::string	phoneNumber;
-	std::string	darkestSecret;
+	StringChecker	*stringChecker = new StringChecker();
+	std::string		firstName;
+	std::string		lastName;
+	std::string		nickname;
+	std::string		phoneNumber;
+	std::string		darkestSecret;
 
 	firstName = PromptForInput("First name: ");
 	lastName = PromptForInput("Last name: ");
 	nickname = PromptForInput("Nickname: ");
-	phoneNumber = PromptForInput("Phone number: ");
+
+	while (true)
+	{
+		phoneNumber = PromptForInput("Phone number: ");
+
+		if (stringChecker->IsPhoneNumber(phoneNumber))
+		{
+			break ;
+		}
+		std::cout << "Not a phone number. Please, Try again." << std::endl;
+	}
+
 	darkestSecret = PromptForInput("The darkest secret: ");
+	delete stringChecker;
 	return new Contact(firstName,
 				lastName,
 				nickname,
@@ -44,9 +57,15 @@ Contact	*CreateContact()
 				darkestSecret);
 }
 
-void	PhoneBookTerminal::ProcessCommand(std::string command)
+bool	PhoneBookTerminal::ProcessCommand(std::string )
 {
-	StringChecker *stringChecker = new StringChecker();
+
+}
+
+void	PhoneBookTerminal::StartTerminal()
+{
+	StringChecker	*stringChecker = new StringChecker();
+	std::string		command;
 
 	if (command.compare("ADD") == 0)
 	{
@@ -63,14 +82,20 @@ void	PhoneBookTerminal::ProcessCommand(std::string command)
 		{
 			std::cin >> index_str;
 
-			if (stringChecker->IsNumber(index_str))
+			if (!stringChecker->IsNumber(index_str))
 			{
-				break ;
+				std::cout << "Index is not a number, try again!" << std::endl;
+				continue ;
 			}
-			std::cout << "Index is not a numer, try again!" << std::endl;
+
+			sscanf(index_str.c_str(), "%d", &index);
+			if (!_phone_book->PrintContactAtIndex(index))
+			{
+				std::cout << "Wrong index! Try again!" << std::endl;
+				continue ;
+			}
+			break;
 		}
-		std::istringstream(index_str) >> index;
-		_phone_book->PrintContactAtIndex(index);
 	}
 	delete stringChecker;
 }

@@ -8,6 +8,7 @@ private:
 
 public:
 	bool	IsNumber(std::string str);
+	bool	IsPhoneNumber(std::string str);
 };
 
 #endif

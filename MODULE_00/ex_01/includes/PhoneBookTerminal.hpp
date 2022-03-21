@@ -14,7 +14,7 @@ private:
 public:
 	PhoneBookTerminal();
 
-	void		ProcessCommand(std::string command);
+	void		StartTerminal();
 };
 
 #endif

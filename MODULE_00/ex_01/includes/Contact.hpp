@@ -23,6 +23,7 @@ public:
 	std::string	GetNickname();
 	std::string	GetPhoneNumber();
 	std::string	GetDarkestSecret();
+	void		Print();
 };
 
 #endif

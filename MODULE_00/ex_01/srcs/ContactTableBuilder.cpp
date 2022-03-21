@@ -1,4 +1,4 @@
-#include "includes/ContactTableBuilder.hpp"
+#include "ContactTableBuilder.hpp"
 #include <string>
 #include <iostream>
 
@@ -27,7 +27,7 @@ std::string		ContactTableBuilder::CreateCell(std::string cell_text)
 	return cell;
 }
 
-std::string	ContactTableBuilder::AddContactToTable(Contact *contact)
+void			ContactTableBuilder::AddContactToTable(Contact *contact)
 {
 	_table[_rows_count] =
 	CreateCell(std::to_string(_rows_count)) + " | " +
