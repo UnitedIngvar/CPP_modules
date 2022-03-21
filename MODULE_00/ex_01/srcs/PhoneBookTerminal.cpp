@@ -119,16 +119,16 @@ bool	PhoneBookTerminal::ProcessCommand(std::string command)
 
 void	PhoneBookTerminal::StartTerminal()
 {
-	std::string		command;
 	bool			exitIsCommanded = false;
 
 	while (!exitIsCommanded)
 	{
+		std::string		command;
+
 		std::cout << "Please, enter a command [ADD, SEARCH, EXIT]: ";
 		getline(std::cin, command);
 		std::cout << std::endl;
 		exitIsCommanded = ProcessCommand(command);
-		command.clear();
 	}
 
 	return;
