@@ -1,6 +1,6 @@
 #ifndef PHONEBOOK_H
-#define PHONEBOOK_H
-#include "Contact.hpp"
+# define PHONEBOOK_H
+# include "Contact.hpp"
 
 class PhoneBook
 {
@@ -12,7 +12,7 @@ private:
 	void	ReplaceOldestContact(Contact *contact);
 
 public:
-	void	AddContact(Contact* contact);
+	void	AddContact(Contact *contact);
 	void	DisplayContactList();
 	void	PrintContactAtIndex(int idex);
 };

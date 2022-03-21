@@ -1,5 +1,6 @@
 #include "includes/ContactTableBuilder.hpp"
 #include <string>
+#include <iostream>
 
 ContactTableBuilder::ContactTableBuilder()
 {
@@ -32,14 +33,14 @@ std::string	ContactTableBuilder::AddContactToTable(Contact *contact)
 	CreateCell(std::to_string(_rows_count)) + " | " +
 	CreateCell(contact->GetFirstName()) + " | " +
 	CreateCell(contact->GetLastName()) + " | " +
-	CreateCell(contact->GetNickname()) + std::endl;
+	CreateCell(contact->GetNickname()) + "\n";
 
 	_rows_count++;
 }
 
 void	ContactTableBuilder::DisplayContactTable()
 {
-	for (int i = 0; i < _rows_count; i++;)
+	for (int i = 0; i < _rows_count; i++)
 	{
 		std::cout << _table[i];
 	}

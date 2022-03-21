@@ -17,10 +17,10 @@ void	PhoneBook::ReplaceOldestContact(Contact *contact)
 		_oldest_contact_index = 0;
 		return;
 	}
-	oldest_contact_index++;
+	_oldest_contact_index++;
 }
 
-void	PhoneBook::AddContact(Contact* contact)
+void	PhoneBook::AddContact(Contact *contact)
 {
 	if (_contacts_count < 8)
 	{
@@ -41,7 +41,8 @@ void	PhoneBook::DisplayContactList()
 	}
 
 	// Можно было бы табличку сохранить до следующего обновления
-	ContactTableBuilder	*contactTableBuilder = new ContactTableBuilder();
+	ContactTableBuilder	*contactTableBuilder =
+		new ContactTableBuilder();
 
 	for (int i = 0; i < _contacts_count; i++)
 	{
