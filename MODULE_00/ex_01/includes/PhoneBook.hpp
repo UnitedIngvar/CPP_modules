@@ -17,6 +17,7 @@ public:
 	void	AddContact(Contact *contact);
 	void	DisplayContactList();
 	bool	PrintContactAtIndex(int idex);
+	bool	IsEmpty();
 };
 
 #endif

@@ -1,12 +1,11 @@
 #include "PhoneBookTerminal.hpp"
-#include "Contact.hpp"
-#include "StringChecker.hpp"
 #include <string>
 #include <iostream>
 
 PhoneBookTerminal::PhoneBookTerminal()
 {
 	_phone_book = new PhoneBook();
+	_string_checker = new StringChecker();
 }
 
 std::string	PhoneBookTerminal::PromptForInput(std::string prompt)
@@ -14,12 +13,13 @@ std::string	PhoneBookTerminal::PromptForInput(std::string prompt)
 	std::string	input;
 
 	std::cout << prompt;
-	std::cin >> input;
-	while (input.empty())
+	getline(std::cin, input);
+	while (_string_checker->IsWhitespaceOrEmpty(input))
 	{
 		std::cout << "Field can't be empty. Try again" << std::endl;
 		std::cout << prompt;
-		std::cin >> input;
+		getline(std::cin, input);
+		std::cout << std::endl;
 	}
 	return input;
 }
@@ -57,32 +57,31 @@ Contact	*PhoneBookTerminal::CreateContact()
 				darkestSecret);
 }
 
-bool	PhoneBookTerminal::ProcessCommand(std::string )
+bool	PhoneBookTerminal::ProcessAdd()
 {
-
+	Contact *contact = CreateContact();
+	_phone_book->AddContact(contact);
+	return false;
 }
 
-void	PhoneBookTerminal::StartTerminal()
+bool	PhoneBookTerminal::ProcessSearch()
 {
-	StringChecker	*stringChecker = new StringChecker();
-	std::string		command;
+	int			index = 0;
 
-	if (command.compare("ADD") == 0)
-	{
-		Contact *contact = CreateContact();
-		_phone_book->AddContact(contact);
-	}
-	else if (command.compare("SEARCH") == 0)
-	{
-		std::string	index_str;
-		int			index;
+		if (_phone_book->IsEmpty())
+		{
+			std::cout << "Nothing to show yet. Add a contact!" << std::endl;
+			return false;
+		}
+
+		std::cout << "Please, enter any index from the table below to show conatct info: " << std::endl;
 		_phone_book->DisplayContactList();
-
 		while (true)
 		{
-			std::cin >> index_str;
+			std::string	index_str;
 
-			if (!stringChecker->IsNumber(index_str))
+			getline(std::cin, index_str);
+			if (!_string_checker->IsNumber(index_str))
 			{
 				std::cout << "Index is not a number, try again!" << std::endl;
 				continue ;
@@ -96,6 +95,41 @@ void	PhoneBookTerminal::StartTerminal()
 			}
 			break;
 		}
+		return false;
+}
+
+bool	PhoneBookTerminal::ProcessCommand(std::string command)
+{
+	if (command.compare("ADD") == 0)
+	{
+		return ProcessAdd();
 	}
-	delete stringChecker;
+	else if (command.compare("SEARCH") == 0)
+	{
+		return ProcessSearch();
+	}
+	else if (command.compare("EXIT") == 0)
+	{
+		return true;
+	}
+
+	std::cout << "Wrong command. Try again." << std::endl;
+	return false;
+}
+
+void	PhoneBookTerminal::StartTerminal()
+{
+	std::string		command;
+	bool			exitIsCommanded = false;
+
+	while (!exitIsCommanded)
+	{
+		std::cout << "Please, enter a command [ADD, SEARCH, EXIT]: ";
+		getline(std::cin, command);
+		std::cout << std::endl;
+		exitIsCommanded = ProcessCommand(command);
+		command.clear();
+	}
+
+	return;
 }

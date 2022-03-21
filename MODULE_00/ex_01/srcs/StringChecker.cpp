@@ -33,3 +33,21 @@ bool	StringChecker::IsPhoneNumber(std::string str)
 	}
 	return true;
 }
+
+bool	StringChecker::IsWhitespaceOrEmpty(std::string str)
+{
+	int i = 0;
+
+	if (str.empty())
+		return true;
+
+	while (str[i])
+	{
+		if (!isspace(str[i]))
+		{
+			return false;
+		}
+		i++;
+	}
+	return true;
+}

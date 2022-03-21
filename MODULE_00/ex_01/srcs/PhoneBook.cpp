@@ -10,8 +10,9 @@ PhoneBook::PhoneBook()
 
 void	PhoneBook::ReplaceOldestContact(Contact *contact)
 {
-	_contacts[_oldest_contact_index] = contact;
+	delete _contacts[_oldest_contact_index];
 
+	_contacts[_oldest_contact_index] = contact;
 	if (_oldest_contact_index == 7)
 	{
 		_oldest_contact_index = 0;
@@ -35,12 +36,6 @@ void	PhoneBook::AddContact(Contact *contact)
 
 void	PhoneBook::DisplayContactList()
 {
-	if (_contacts_count == 0)
-	{
-		std::cout << "Nothing to show yet! Add a contact" << std::endl;
-	}
-
-	// Можно было бы табличку сохранить до следующего обновления
 	ContactTableBuilder	*contactTableBuilder =
 		new ContactTableBuilder();
 
@@ -51,6 +46,11 @@ void	PhoneBook::DisplayContactList()
 	contactTableBuilder->DisplayContactTable();
 
 	delete contactTableBuilder;
+}
+
+bool	PhoneBook::IsEmpty()
+{
+	return _contacts_count == 0;
 }
 
 bool	PhoneBook::PrintContactAtIndex(int index)
