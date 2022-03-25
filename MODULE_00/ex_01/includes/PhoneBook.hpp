@@ -18,6 +18,8 @@ public:
 	void	DisplayContactList();
 	bool	PrintContactAtIndex(int idex);
 	bool	IsEmpty();
+
+	~PhoneBook();
 };
 
 #endif

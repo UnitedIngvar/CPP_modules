@@ -24,6 +24,8 @@ public:
 	std::string	GetPhoneNumber();
 	std::string	GetDarkestSecret();
 	void		Print();
+
+	~Contact();
 };
 
 #endif

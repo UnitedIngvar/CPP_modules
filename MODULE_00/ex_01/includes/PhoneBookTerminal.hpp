@@ -20,6 +20,7 @@ public:
 	PhoneBookTerminal();
 
 	void		StartTerminal();
+	~PhoneBookTerminal();
 };
 
 #endif

@@ -63,3 +63,11 @@ bool	PhoneBook::PrintContactAtIndex(int index)
 	_contacts[index]->Print();
 	return true;
 }
+
+PhoneBook::~PhoneBook()
+{
+	for (int i = 0; i < _contacts_count; i++)
+	{
+		delete _contacts[i];
+	}
+}

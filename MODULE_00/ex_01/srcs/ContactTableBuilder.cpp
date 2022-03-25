@@ -45,3 +45,8 @@ void	ContactTableBuilder::DisplayContactTable()
 		std::cout << _table[i];
 	}
 }
+
+ContactTableBuilder::~ContactTableBuilder()
+{
+
+}

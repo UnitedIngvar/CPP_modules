@@ -16,6 +16,7 @@ public:
 
 	void		AddContactToTable(Contact *contact);
 	void		DisplayContactTable();
+	~ContactTableBuilder();
 };
 
 #endif

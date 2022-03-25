@@ -32,3 +32,8 @@ void		Contact::Print()
 	std::cout << "Phone number: " << _phone_number << std::endl;
 	std::cout << "Darkest secret: " << _darkest_secret << std::endl;
 }
+
+Contact::~Contact()
+{
+
+}

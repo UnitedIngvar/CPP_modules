@@ -10,6 +10,8 @@ public:
 	bool	IsNumber(std::string str);
 	bool	IsPhoneNumber(std::string str);
 	bool	IsWhitespaceOrEmpty(std::string str);
+
+	~StringChecker();
 };
 
 #endif

@@ -133,3 +133,9 @@ void	PhoneBookTerminal::StartTerminal()
 
 	return;
 }
+
+PhoneBookTerminal::~PhoneBookTerminal()
+{
+	delete _phone_book;
+	delete _string_checker;
+}
