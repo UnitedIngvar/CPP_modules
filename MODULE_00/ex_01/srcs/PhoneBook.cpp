@@ -55,7 +55,7 @@ bool	PhoneBook::IsEmpty()
 
 bool	PhoneBook::PrintContactAtIndex(int index)
 {
-	if (index > _contacts_count)
+	if (index > _contacts_count - 1)
 	{
 		return false;
 	}
