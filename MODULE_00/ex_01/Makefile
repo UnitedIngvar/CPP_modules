@@ -16,10 +16,10 @@ $(NAME): $(OBJECTS)
 		$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
 
 %.o : %.cpp
-	$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
+	$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@ -MMD
 
 clean:
-		@rm -f $(OBJECTS)
+		@rm -f $(OBJECTS) $(D_FILES)
 
 fclean:	clean
 		@rm -f $(NAME)

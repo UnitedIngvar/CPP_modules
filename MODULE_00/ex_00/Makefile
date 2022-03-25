@@ -1,19 +1,12 @@
-NAME		= megaphone
+NAME			= megaphone
 
-SOURCES_LIST	= megaphone.cpp\
+DIR				= srcs
+SRCS			= $(shell find $(DIR) -name *.cpp)
+OBJECTS			= $(patsubst %.cpp, %.o, $(SRCS))
+D_FILES			= ${patsubst %.cpp, %.d, ${SRCS}}
 
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98
-
-INCLUDES = -I$(HEADERS_DIR)
-
-HEADERS_LIST = \
-HEADERS_DIR	=  \
-HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
-
-OBJECTS	=	$(patsubst %.cpp, %.o, $(SOURCES_LIST))
-
-.PHONY:	all clean fclean re
 
 all	: 	$(NAME)
 
@@ -23,7 +16,6 @@ $(NAME): $(OBJECTS)
 %.o : %.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
 
-
 clean:
 		@rm -f $(OBJECTS)
 
@@ -31,3 +23,5 @@ fclean:	clean
 		@rm -f $(NAME)
 
 re:		fclean all
+
+.PHONY:	all clean fclean re
