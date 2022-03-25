@@ -7,4 +7,6 @@ int	main(void)
 
 	terminal->StartTerminal();
 	delete terminal;
+
+	system("leaks phonebook | grep 'leaks for'");
 }

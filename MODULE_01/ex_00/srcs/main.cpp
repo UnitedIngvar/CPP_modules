@@ -6,4 +6,6 @@ int	main(void)
 	Zombie *zombie = NewZombie(name);
 	RandomChump(name);
 	delete zombie;
+
+	system("leaks BraiiiiiiinnnzzzZ | grep 'leaks for'");
 }
