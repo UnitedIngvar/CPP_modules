@@ -1,4 +1,4 @@
-NAME			= Harl_filter
+NAME			= Harl_2_0
 
 DIR				= srcs
 HEADERS_DIR		= includes/
