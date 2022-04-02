@@ -1,5 +1,7 @@
-#include <string>
-#include "Weapon.hpp"
+#ifndef HUMANA_HPP
+# define HUAMNA_HPP
+# include <string>
+# include "Weapon.hpp"
 
 class HumanA
 {
@@ -13,3 +15,5 @@ public:
 
 	void		Attack();
 };
+
+#endif
