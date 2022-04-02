@@ -11,7 +11,8 @@ std::string	ReplceEntries(
 	{
 		if (line.compare(i, entry.length(), entry) == 0)
 		{
-			line.replace(i, entry.length(), replacement);
+			line.erase(i, entry.length());
+			line.insert(i, replacement);
 			i += replacement.length() - 1;
 		}
 	}
