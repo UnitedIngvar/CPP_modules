@@ -15,34 +15,34 @@ class Fixed
 	Fixed(const float floatingPoint);
 	Fixed(const Fixed &fixed);
 
-	Fixed			&operator=(const Fixed &fixed);
-	bool			operator>(const Fixed &fixed) const;
-	bool			operator<(const Fixed &fixed) const;
-	bool			operator>=(const Fixed &fixed) const;
-	bool			operator<=(const Fixed &fixed) const;
-	bool			operator==(const Fixed &fixed) const;
-	bool			operator!=(const Fixed &fixed) const;
-	Fixed			operator+(const Fixed &fixed) const;
-	Fixed			operator-(const Fixed &fixed) const;
-	Fixed			operator*(const Fixed &fixed) const;
-	Fixed			operator/(const Fixed &fixed) const;
-	Fixed			&operator++();
-	Fixed			operator++(int);
-	Fixed			&operator--();
-	Fixed			operator--(int);
+	Fixed				&operator=(const Fixed &fixed);
+	bool				operator>(const Fixed &fixed) const;
+	bool				operator<(const Fixed &fixed) const;
+	bool				operator>=(const Fixed &fixed) const;
+	bool				operator<=(const Fixed &fixed) const;
+	bool				operator==(const Fixed &fixed) const;
+	bool				operator!=(const Fixed &fixed) const;
+	Fixed				operator+(const Fixed &fixed) const;
+	Fixed				operator-(const Fixed &fixed) const;
+	Fixed				operator*(const Fixed &fixed) const;
+	Fixed				operator/(const Fixed &fixed) const;
+	Fixed				&operator++();
+	Fixed				operator++(int);
+	Fixed				&operator--();
+	Fixed				operator--(int);
 
-	Fixed&			Min(Fixed& a, Fixed& b);
-	Fixed&			Min(const Fixed& a, const Fixed& b);
-	Fixed&			Max(Fixed& a, Fixed& b);
-	Fixed&			Max(const Fixed& a, const Fixed& b);
+	static Fixed&		Min(Fixed& a, Fixed& b);
+	static const Fixed&	Min(const Fixed& a, const Fixed& b);
+	static Fixed&		Max(Fixed& a, Fixed& b);
+	static const Fixed&	Max(const Fixed& a, const Fixed& b);
 
-	int				GetRawBits(void) const;
-	void			SetRawBits(int const raw);
-	float			ToFloat(void) const;
-	int				ToInt(void) const;
+	int					GetRawBits(void) const;
+	void				SetRawBits(int const raw);
+	float				ToFloat(void) const;
+	int					ToInt(void) const;
 
 	~Fixed();
 };
 
-std::ostream &	operator<<(std::ostream & o, Fixed const &fixed);
+std::ostream &			operator<<(std::ostream & o, Fixed const &fixed);
 #endif
