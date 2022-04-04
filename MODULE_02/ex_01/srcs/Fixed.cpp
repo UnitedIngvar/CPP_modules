@@ -7,19 +7,19 @@ Fixed::Fixed()
 	_fixed_value = 0;
 }
 
-Fixed::Fixed(Fixed const &assign)
+Fixed::Fixed(Fixed const &other)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	_fixed_value = assign.GetRawBits();
+	_fixed_value = other._fixed_value;
 }
 
-Fixed::Fixed(const int integer)
+Fixed::Fixed(int const integer)
 {
 	std::cout << "Int constructor called" << std::endl;
 	_fixed_value = (integer * (1 << _fractional_bits_number));
 }
 
-Fixed::Fixed(const float floatingPoint)
+Fixed::Fixed(float const floatingPoint)
 {
 	std::cout << "Float constructor called" << std::endl;
 	_fixed_value = (int)(roundf(floatingPoint * (1 << _fractional_bits_number)));
@@ -35,7 +35,7 @@ int				Fixed::ToInt(void) const
 	return (int)(roundf(_fixed_value / (1 << _fractional_bits_number)));
 }
 
-Fixed 			&Fixed::operator=(const Fixed &fixed)
+Fixed			&Fixed::operator=(Fixed const &fixed)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	_fixed_value = fixed.GetRawBits();
@@ -47,7 +47,7 @@ int				Fixed::GetRawBits(void) const
 	return (_fixed_value);
 }
 
-void			Fixed::SetRawBits(const int raw)
+void			Fixed::SetRawBits(int const raw)
 {
 	_fixed_value = raw;
 }
@@ -58,7 +58,7 @@ std::ostream	&operator<<(std::ostream &o, Fixed const &fixed)
 	return o;
 }
 
-Fixed::~Fixed()
+Fixed::~Fixed(void)
 {
 	std::cout << "Destructor called" << std::endl;
 }
