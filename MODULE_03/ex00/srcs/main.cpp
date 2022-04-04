@@ -4,6 +4,7 @@ int main(void)
 {
 	ClapTrap caren("Caren");
 	ClapTrap copy = caren;
+	copy = caren;
 
 	caren.Attack("Charly");
 	copy.Attack("Charly");

@@ -44,5 +44,5 @@ class Fixed
 	~Fixed();
 };
 
-std::ostream &			operator<<(std::ostream & o, Fixed const &fixed);
+std::ostream			&operator<<(std::ostream & o, Fixed const &fixed);
 #endif

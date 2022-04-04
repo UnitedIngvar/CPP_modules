@@ -1,7 +1,15 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap()
+{
+	_name = std::string().empty();
+	_hitpoints = 10;
+	_energy_points = 10;
+	_attack_damage = 0;
+}
+
+ClapTrap::ClapTrap(std::string const &name)
 {
 	std::cout << "This is a constructor of " << name << std::endl;
 	_name = name;
@@ -10,7 +18,7 @@ ClapTrap::ClapTrap(std::string name)
 	_attack_damage = 0;
 }
 
-ClapTrap::ClapTrap(ClapTrap &other)
+ClapTrap::ClapTrap(ClapTrap const &other)
 {
 	_name = other._name;
 	_hitpoints = other._hitpoints;
@@ -19,7 +27,7 @@ ClapTrap::ClapTrap(ClapTrap &other)
 	std::cout << "This is a copy constructor of " << _name << std::endl;
 }
 
-ClapTrap	&ClapTrap::operator=(const ClapTrap &other)
+ClapTrap	&ClapTrap::operator=(ClapTrap const &other)
 {
 	std::cout << "In copy assignment!" << std::endl;
 	if (this != &other)

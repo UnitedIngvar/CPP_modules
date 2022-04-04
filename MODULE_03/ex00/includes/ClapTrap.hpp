@@ -9,12 +9,13 @@ class ClapTrap
 	unsigned int	_attack_damage;
 
 	public:
-	ClapTrap(std::string name);
-	ClapTrap(ClapTrap &other);
+	ClapTrap(void);
+	ClapTrap(ClapTrap const &other);
+	ClapTrap(std::string const &name);
 
-	ClapTrap	&operator=(const ClapTrap &other);
+	ClapTrap	&operator=(ClapTrap const &other);
 
-	void		Attack(std::string const &target);
+	void		Attack(std::string const &target) const;
 	void		TakeDamage(unsigned int amount);
 	void		BeRepaired(unsigned int amount);
 
