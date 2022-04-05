@@ -3,7 +3,7 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "Default constructor" << std::endl;
+	std::cout << "Default constructor of ClapTrap" << std::endl;
 	_name = std::string().empty();
 	_hitpoints = 10;
 	_energy_points = 10;
@@ -12,7 +12,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(ClapTrap const &other)
 {
-	std::cout << "This is a copy constructor of " << _name << std::endl;
+	std::cout << "Copy constructor of ClapTrap" << std::endl;
 	_name = other._name + "_constr_copy";
 	_hitpoints = other._hitpoints;
 	_energy_points = other._energy_points;
@@ -21,14 +21,14 @@ ClapTrap::ClapTrap(ClapTrap const &other)
 
 ClapTrap::ClapTrap(std::string const &name)
 {
-	std::cout << "This is a constructor of " << name << std::endl;
+	std::cout << "Custom constructor of ClapTrap " << name << std::endl;
 	_name = name;
 	_hitpoints = 10;
 	_energy_points = 10;
 	_attack_damage = 0;
 }
 
-bool		ClapTrap::EnsureCanAct() const
+bool			ClapTrap::EnsureCanAct() const
 {
 	if (_hitpoints <= 0)
 	{
@@ -48,7 +48,7 @@ bool		ClapTrap::EnsureCanAct() const
 	return true;
 }
 
-void		ClapTrap::Attack(std::string const &target)
+void	ClapTrap::Attack(std::string const &target)
 {
 	if (!EnsureCanAct())
 	{
@@ -62,7 +62,7 @@ void		ClapTrap::Attack(std::string const &target)
 	_energy_points--;
 }
 
-void		ClapTrap::TakeDamage(unsigned int amount)
+void			ClapTrap::TakeDamage(unsigned int amount)
 {
 	if (_hitpoints == 0)
 	{
@@ -87,7 +87,7 @@ void		ClapTrap::TakeDamage(unsigned int amount)
 	}
 }
 
-void		ClapTrap::BeRepaired(unsigned int amount)
+void			ClapTrap::BeRepaired(unsigned int amount)
 {
 	if (!EnsureCanAct())
 	{
@@ -100,7 +100,7 @@ void		ClapTrap::BeRepaired(unsigned int amount)
 	_energy_points--;
 }
 
-ClapTrap	&ClapTrap::operator=(ClapTrap const &other)
+ClapTrap		&ClapTrap::operator=(ClapTrap const &other)
 {
 	if (this != &other)
 	{
