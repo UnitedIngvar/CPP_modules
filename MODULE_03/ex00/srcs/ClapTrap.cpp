@@ -28,7 +28,7 @@ ClapTrap::ClapTrap(std::string const &name)
 	_attack_damage = 0;
 }
 
-bool		ClapTrap::EnsureCanAct() const
+bool		ClapTrap::EnsureCanAct(void) const
 {
 	if (_hitpoints <= 0)
 	{
@@ -113,8 +113,7 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &other)
 	return *this;
 }
 
-
-ClapTrap::~ClapTrap()
+ClapTrap::~ClapTrap(void)
 {
 	std::cout << "This is a destructor of " << _name << std::endl;
 }

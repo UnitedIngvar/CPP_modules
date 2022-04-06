@@ -11,7 +11,7 @@ class ClapTrap
 	unsigned int	_energy_points;
 	unsigned int	_attack_damage;
 
-	bool			EnsureCanAct() const;
+	bool			EnsureCanAct(void) const;
 
 	public:
 	ClapTrap(void);
@@ -24,7 +24,7 @@ class ClapTrap
 
 	ClapTrap		&operator=(ClapTrap const &other);
 
-	~ClapTrap();
+	~ClapTrap(void);
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 void	ConstructorChainTest(void)
 {
@@ -7,12 +8,18 @@ void	ConstructorChainTest(void)
 		<< std::endl << std::endl;
 
 	{
-		ScavTrap *filthy = new ScavTrap("Filthy");
-		ScavTrap *filthyConstructorCopy = new ScavTrap(*filthy);
-		ScavTrap filthyAssignmentCopy;
-		filthyAssignmentCopy = *filthy;
-		delete filthy;
-		delete filthyConstructorCopy;
+		ScavTrap *scav = new ScavTrap("Scav");
+		FragTrap *frag = new FragTrap("Frag");
+		ScavTrap *scavConstructorCopy = new ScavTrap(*scav);
+		FragTrap *fragConstructorCopy = new FragTrap(*frag);
+		ScavTrap scavAssignmentCopy;
+		FragTrap fragAssignmentCopy;
+		scavAssignmentCopy = *scav;
+		fragAssignmentCopy = *frag;
+		delete scav;
+		delete scavConstructorCopy;
+		delete frag;
+		delete fragConstructorCopy;
 	}
 
 	std::cout << std::endl << std::endl
@@ -27,15 +34,16 @@ void	PolymorphismTest(void)
 	std::cout << "This is polymorphism chain test"
 		<< std::endl << std::endl;
 	{
-		ScavTrap *scaviar = new ScavTrap("Polly");
+		FragTrap *scaviar = new FragTrap("Fragger");
 		ClapTrap copy = *scaviar;
+
 		scaviar->Attack("Heresy");
 		copy.Attack("Heresy");
 		scaviar->TakeDamage(5);
 		copy.TakeDamage(5);
 		scaviar->BeRepaired(5);
 
-		scaviar->GuardGate();
+		scaviar->HighFiveGuys();
 		delete scaviar;
 	}
 
@@ -50,5 +58,5 @@ int		main(void)
 {
 	ConstructorChainTest();
 	PolymorphismTest();
-	system("leaks Serena_my_love | grep 'leaks for'");
+	system("leaks Repetitive_work | grep 'leaks for'");
 }
