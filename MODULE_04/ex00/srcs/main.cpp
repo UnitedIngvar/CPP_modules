@@ -9,7 +9,7 @@ void	SomePolymorphicFunction(const Animal *animal)
 		<< std::endl;
 }
 
-int	main()
+int	main(void)
 {
 	const Animal* meta = new Animal();
 	const Animal* dog = new Dog();

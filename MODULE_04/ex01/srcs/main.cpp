@@ -4,6 +4,9 @@
 
 void	TestAllocAndDealloc()
 {
+	std::cout << "_______________________" << std::endl;
+	std::cout << "In alloc/dealloc test!" << std::endl << std::endl;
+
 	const int number = 50;
 	Animal **animals = new Animal*[number];
 
@@ -24,6 +27,10 @@ void	TestAllocAndDealloc()
 		delete animals[i];
 	}
 	delete[] animals;
+
+	std::cout << std::endl;
+	std::cout << "End of alloc/dealloc test!" << std::endl;
+	std::cout << "________________________" << std::endl << std::endl;
 }
 
 void	TestCopyAssignment()

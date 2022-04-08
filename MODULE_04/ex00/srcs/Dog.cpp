@@ -6,7 +6,7 @@ Dog::Dog()
 	_type = "Dog";
 }
 
-Dog::Dog(Dog &other) : Animal(other)
+Dog::Dog(Dog const &other) : Animal(other)
 {
 
 }

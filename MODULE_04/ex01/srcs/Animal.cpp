@@ -1,12 +1,15 @@
 #include "Animal.hpp"
+#include <iostream>
 
 Animal::Animal()
 {
+	std::cout << "Default constructor of <Animal>" << std::endl;
 	_type = "animal";
 }
 
 Animal::Animal(Animal const &other)
 {
+	std::cout << "Copy constructor of <Animal>" << std::endl;
 	_type = other._type;
 }
 
@@ -22,6 +25,7 @@ void	Animal::MakeSound(void) const
 
 Animal		&Animal::operator=(Animal const &other)
 {
+	std::cout << "Copy assignment opeator of <Animal>" << std::endl;
 	if (this == &other)
 		return *this;
 
@@ -31,5 +35,5 @@ Animal		&Animal::operator=(Animal const &other)
 
 Animal::~Animal()
 {
-
+	std::cout << "Destructor of <Animal>" << std::endl;
 }

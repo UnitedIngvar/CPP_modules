@@ -5,7 +5,7 @@ Animal::Animal()
 	_type = "animal";
 }
 
-Animal::Animal(Animal &other)
+Animal::Animal(Animal const &other)
 {
 	_type = other._type;
 }

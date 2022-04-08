@@ -6,7 +6,7 @@ Cat::Cat()
 	_type = "Cat";
 }
 
-Cat::Cat(Cat &other) : Animal(other)
+Cat::Cat(Cat const &other) : Animal(other)
 {
 
 }
