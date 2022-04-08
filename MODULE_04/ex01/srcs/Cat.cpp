@@ -19,7 +19,7 @@ void	Cat::MakeSound(void) const
 	std::cout << "Meow!" << std::endl;
 }
 
-Cat	&Cat::operator=(Cat const &other)
+Cat		&Cat::operator=(Cat const &other)
 {
 	std::cout << "Copy assignment opeator of <Cat>" << std::endl;
 	if (this == &other)

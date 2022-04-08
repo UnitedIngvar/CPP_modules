@@ -16,7 +16,7 @@ void	Cat::MakeSound(void) const
 	std::cout << "Meow!" << std::endl;
 }
 
-Cat	&Cat::operator=(Cat const &other)
+Cat		&Cat::operator=(Cat const &other)
 {
 	if (this == &other)
 		return *this;

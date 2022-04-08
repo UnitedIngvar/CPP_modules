@@ -11,7 +11,7 @@ public:
 
 	void	MakeSound(void) const;
 
-	Cat	&operator=(Cat const &other);
+	Cat		&operator=(Cat const &other);
 
 	~Cat();
 };

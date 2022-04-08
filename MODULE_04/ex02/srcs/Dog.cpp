@@ -19,7 +19,7 @@ void	Dog::MakeSound(void) const
 	std::cout << "Bark!" << std::endl;
 }
 
-Dog	&Dog::operator=(Dog const &other)
+Dog		&Dog::operator=(Dog const &other)
 {
 	std::cout << "Copy assignment opeator of <Dog>" << std::endl;
 	if (this == &other)

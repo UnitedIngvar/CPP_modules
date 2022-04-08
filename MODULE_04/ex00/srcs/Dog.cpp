@@ -16,7 +16,7 @@ void	Dog::MakeSound(void) const
 	std::cout << "Bark!" << std::endl;
 }
 
-Dog	&Dog::operator=(Dog const &other)
+Dog		&Dog::operator=(Dog const &other)
 {
 	if (this == &other)
 		return *this;

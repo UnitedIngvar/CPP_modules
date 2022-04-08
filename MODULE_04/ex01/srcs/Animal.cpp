@@ -13,17 +13,17 @@ Animal::Animal(Animal const &other)
 	_type = other._type;
 }
 
-std::string	Animal::GetType(void) const
+std::string const	&Animal::GetType(void) const
 {
 	return _type;
 }
 
-void	Animal::MakeSound(void) const
+void				Animal::MakeSound(void) const
 {
 
 }
 
-Animal		&Animal::operator=(Animal const &other)
+Animal				&Animal::operator=(Animal const &other)
 {
 	std::cout << "Copy assignment opeator of <Animal>" << std::endl;
 	if (this == &other)

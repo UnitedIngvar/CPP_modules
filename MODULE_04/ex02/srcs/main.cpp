@@ -81,7 +81,6 @@ void	TestCopyConstructor()
 
 int	main(void)
 {
-	//Animal *animal = new Animal();
 	TestAllocAndDealloc();
 	TestCopyAssignment();
 	TestCopyConstructor();
