@@ -18,7 +18,7 @@ Brain::Brain(Brain const &other)
 	}
 }
 
-Brain &Brain::operator=(Brain const &other)
+Brain	&Brain::operator=(Brain const &other)
 {
 	if (this == &other)
 	{
