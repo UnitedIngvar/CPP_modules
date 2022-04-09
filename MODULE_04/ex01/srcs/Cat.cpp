@@ -26,13 +26,9 @@ Cat		&Cat::operator=(Cat const &other)
 	{
 		return *this;
 	}
-	if (_brain != NULL)
-	{
-		delete _brain;
-	}
 
 	_type = other._type;
-	_brain = new Brain(*(other._brain));
+	*_brain = *(other._brain);
 
 	return *this;
 }

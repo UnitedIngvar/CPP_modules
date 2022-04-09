@@ -1,12 +1,14 @@
 #include "Brain.hpp"
+#include <iostream>
 
 Brain::Brain()
 {
-
+	std::cout << "Default constructor of <Brain>" << std::endl;
 }
 
 Brain::Brain(Brain const &other)
 {
+	std::cout << "Copy constructor of <Brain>" << std::endl;
 	if (this == &other)
 	{
 		return;
@@ -20,6 +22,7 @@ Brain::Brain(Brain const &other)
 
 Brain	&Brain::operator=(Brain const &other)
 {
+	std::cout << "Copy assignment operator of <Brain>" << std::endl;
 	if (this == &other)
 	{
 		return *this;
@@ -34,4 +37,5 @@ Brain	&Brain::operator=(Brain const &other)
 
 Brain::~Brain()
 {
+	std::cout << "Destructor of <Brain>" << std::endl;
 }

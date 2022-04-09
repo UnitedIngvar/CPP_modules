@@ -37,7 +37,7 @@ void				Bureaucrat::Increase()
 	else
 	{
 		_grade--;
-		std::cout << *this << " bureuacrat grade is " << _grade <<std::endl;
+		std::cout << *this;
 	}
 }
 
@@ -48,7 +48,7 @@ void				Bureaucrat::Decrease()
 	else
 	{
 		_grade++;
-		std::cout << *this << " bureuacrat grade is " << _grade <<std::endl;
+		std::cout << *this;
 	}
 }
 
@@ -60,13 +60,8 @@ Bureaucrat			&Bureaucrat::operator=(Bureaucrat const &other)
 	}
 
 	_grade = other.GetGrade();
+	return *this;
 }
-
-class GradeTooHighException: public std::exception
-{
-public:
-	virtual const char	*what() const throw();
-};
 
 const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
@@ -81,4 +76,10 @@ const char	*Bureaucrat::GradeTooHighException::what() const throw()
 Bureaucrat::~Bureaucrat()
 {
 
+}
+
+std::ostream &operator<<(std::ostream &out, Bureaucrat const &bureuacrat)
+{
+	out << bureuacrat.GetName() << ", bureuacrat grade is " << bureuacrat.GetGrade() << std::endl;
+	return out;
 }

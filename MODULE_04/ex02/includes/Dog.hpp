@@ -15,7 +15,7 @@ public:
 
 	void	MakeSound(void) const;
 
-	Dog	&operator=(Dog const &other);
+	Dog		&operator=(Dog const &other);
 
 	~Dog();
 };

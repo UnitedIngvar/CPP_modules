@@ -15,7 +15,7 @@ public:
 	std::string	const	&GetType(void) const;
 	virtual void		MakeSound(void) const = 0;
 
-	Animal	&operator=(Animal const &other);
+	Animal				&operator=(Animal const &other);
 
 	virtual ~Animal() = 0;
 };

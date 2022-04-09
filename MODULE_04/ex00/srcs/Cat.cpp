@@ -3,12 +3,13 @@
 
 Cat::Cat()
 {
+	std::cout << "Default constructor of <Cat>" << std::endl;
 	_type = "Cat";
 }
 
 Cat::Cat(Cat const &other) : Animal(other)
 {
-
+	std::cout << "Copy constructor of <Cat>" << std::endl;
 }
 
 void	Cat::MakeSound(void) const
@@ -18,6 +19,7 @@ void	Cat::MakeSound(void) const
 
 Cat		&Cat::operator=(Cat const &other)
 {
+	std::cout << "Copy assignment operator of <Cat>" << std::endl;
 	if (this == &other)
 		return *this;
 
@@ -27,5 +29,5 @@ Cat		&Cat::operator=(Cat const &other)
 
 Cat::~Cat()
 {
-
+	std::cout << "Destructor of <Cat>" << std::endl;
 }

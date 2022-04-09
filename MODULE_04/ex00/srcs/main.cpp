@@ -1,5 +1,6 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 
 void	SomePolymorphicFunction(const Animal *animal)
@@ -9,7 +10,18 @@ void	SomePolymorphicFunction(const Animal *animal)
 		<< std::endl;
 }
 
-int	main(void)
+void	WrongPolymorphismTest()
+{
+	WrongAnimal *wrong = new WrongCat();
+	WrongCat	*wrongCat = new WrongCat();
+
+	wrongCat->MakeSound();
+	wrong->MakeSound();
+	delete wrong;
+	delete wrongCat;
+}
+
+int		main(void)
 {
 	const Animal* meta = new Animal();
 	const Animal* dog = new Dog();
@@ -29,7 +41,8 @@ int	main(void)
 	SomePolymorphicFunction(dog);
 	SomePolymorphicFunction(meta);
 
+	WrongPolymorphismTest();
+
 	delete dog;
 	delete cat;
-	return 0;
 }
