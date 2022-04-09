@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <string>
 
 Bureaucrat::Bureaucrat() :
@@ -61,6 +62,27 @@ void				Bureaucrat::Decrease()
 	std::cout << *this;
 }
 
+void				Bureaucrat::SignForm(Form &form) const
+{
+	if (form.GetIsSigned())
+	{
+		std::cout << _name << " couldn’t sign form " << form.GetName() <<
+		" because is already signed." << std::endl;
+
+		return;
+	}
+
+	if (form.GetSignGrade() < _grade)
+	{
+		std::cout << _name << " couldn’t sign form " << form.GetName() <<
+		" because " << _name << "'s grade is too low." << std::endl;
+
+		return;
+	}
+
+	form.BeSigned(*this);
+	std::cout << _name << " signed " << form.GetName() << std::endl;
+}
 Bureaucrat			&Bureaucrat::operator=(Bureaucrat const &other)
 {
 	if (this == &other)

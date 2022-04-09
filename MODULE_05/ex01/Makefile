@@ -1,4 +1,4 @@
-NAME			= Beareuaucraut
+NAME			= Form_up_maggots
 
 DIR				= srcs
 HEADERS_DIR		= includes/
