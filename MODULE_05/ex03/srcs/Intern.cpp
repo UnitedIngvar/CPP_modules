@@ -6,11 +6,9 @@
 
 Intern::Intern()
 {
-	form_method_maps = new FormMethodMap[FORM_COUNT];
-
-	form_method_maps[0]	= FormMethodMap("PresidentialPardonForm", &Intern::CreatePresidentialPardonForm);
-	form_method_maps[1] = FormMethodMap("RobotomyRequestForm", &Intern::CreateRobotomyRequestForm);
-	form_method_maps[2] = FormMethodMap("ShrubberyCreationForm", &Intern::CreateShrubberyCreationForm);
+	form_method_maps[0] = new FormMethodMap("PresidentialPardonForm", &Intern::CreatePresidentialPardonForm);
+	form_method_maps[1] = new FormMethodMap("RobotomyRequestForm", &Intern::CreateRobotomyRequestForm);
+	form_method_maps[2] = new FormMethodMap("ShrubberyCreationForm", &Intern::CreateShrubberyCreationForm);
 }
 
 Intern::Intern(Intern const &other)
@@ -18,38 +16,57 @@ Intern::Intern(Intern const &other)
 	(void)other;
 }
 
-Form	&CreatePresidentialPardonForm(std::string target)
+Form		&Intern::CreatePresidentialPardonForm(std::string const &target)
 {
 	return *(new PresidentialPardonForm(target));
 }
 
-Form	&CreateRobotomyRequestForm(std::string target)
+Form		&Intern::CreateRobotomyRequestForm(std::string const &target)
 {
 	return *(new RobotomyRequestForm(target));
 }
 
-Form	&CreateShrubberyCreationForm(std::string target)
+Form		&Intern::CreateShrubberyCreationForm(std::string const &target)
 {
 	return *(new ShrubberyCreationForm(target));
 }
 
-Form	&Intern::MakeForm(std::string target)
+Form		&Intern::MakeForm(std::string const &name, std::string const &target)
 {
 	for (size_t i = 0; i < FORM_COUNT; i++)
 	{
-		if (form_method_maps[i].AppliesTo(target))
+		if (form_method_maps[i]->AppliesTo(name))
 		{
-			return this->*(form_method_maps[i].GetFactoryMethod())(target);
+			factory_method method =
+				form_method_maps[i]->GetFactoryMethod();
+
+			std::cout << method << std::endl;
+
+			Form &form = (this->*method)(target);
+			std::cout << "Intern creates " << form << std::endl;
+			return form;
 		}
 	}
+
+	throw FormTypeIsNotDefined();
 }
 
-Intern	&Intern::operator=(Intern const &other)
+Intern		&Intern::operator=(Intern const &other)
 {
 	(void)other;
+
+	return *this;
+}
+
+const char	*Intern::FormTypeIsNotDefined::what() const throw()
+{
+	return "Form type is not defined exception";
 }
 
 Intern::~Intern()
 {
-
+	for (size_t i = 0; i < FORM_COUNT; i++)
+	{
+		delete form_method_maps[i];
+	}
 }

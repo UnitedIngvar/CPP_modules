@@ -8,14 +8,14 @@ PresidentialPardonForm::PresidentialPardonForm(void) :
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target) :
-	Form(target, 25, 5),
+	Form("PresidentialPardonForm", 25, 5),
 	_target(target)
 {
 
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) :
-	Form(other._target, 25, 5)
+	Form(other.GetName(), 25, 5)
 {
 	*this = other;
 }

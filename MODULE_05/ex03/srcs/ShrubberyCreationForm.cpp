@@ -8,14 +8,14 @@ ShrubberyCreationForm::ShrubberyCreationForm(void) :
 
 }
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) :
-	Form(target, 145, 137),
+	Form("ShrubberyCreationForm", 145, 137),
 	_target(target)
 {
 
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) :
-	Form(other._target, 145, 137),
+	Form(other.GetName(), 145, 137),
 	_target(other._target)
 {
 	*this = other;
@@ -50,7 +50,7 @@ void					ShrubberyCreationForm::Execute(Bureaucrat const &executor) const
 					|||\n\
 					|||\n\
 					|||\n\
-					 |||\n";
+					|||\n";
 
 	std::ofstream file(_target + "_shrubbery");
 	if (!file.good())

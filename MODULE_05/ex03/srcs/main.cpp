@@ -3,16 +3,18 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 void	PardonTest()
 {
+	Intern					intern;
 	Bureaucrat				boss("Ray", 5);
 	Bureaucrat				broke("Lana", 150);
-	PresidentialPardonForm	pardon;
 
 	std::cout << "-------------PardonTest---------------"
 		<< std::endl << std::endl;
 
+	Form &pardon = intern.MakeForm("PresidentialPardonForm", "Zurkerberg");
 	boss.ExecuteForm(pardon);
 	broke.ExecuteForm(pardon);
 	broke.SignForm(pardon);
@@ -26,13 +28,14 @@ void	PardonTest()
 
 void	ShrubberyTest()
 {
+	Intern					intern;
 	Bureaucrat				boss("Ray", 5);
 	Bureaucrat				broke("Lana", 150);
-	ShrubberyCreationForm	shrubbery;
 
 	std::cout << "-------------ShrubberyTest---------------"
 		<< std::endl << std::endl;
 
+	Form &shrubbery = intern.MakeForm("ShrubberyCreationForm", "Shrub");
 	boss.ExecuteForm(shrubbery);
 	broke.ExecuteForm(shrubbery);
 	broke.SignForm(shrubbery);
@@ -47,13 +50,14 @@ void	ShrubberyTest()
 
 void	RobotomyTest()
 {
+	Intern					intern;
 	Bureaucrat				boss("Ray", 5);
 	Bureaucrat				broke("Lana", 150);
-	RobotomyRequestForm		robo;
 
 	std::cout << "-------------RobotomyTest---------------"
 		<< std::endl << std::endl;
 
+	Form &robo = intern.MakeForm("RobotomyRequestForm", "Mark");
 	boss.ExecuteForm(robo);
 	broke.ExecuteForm(robo);
 	broke.SignForm(robo);
@@ -67,8 +71,6 @@ void	RobotomyTest()
 
 int		main(void)
 {
-	//Form abstract;
-
 	PardonTest();
 	ShrubberyTest();
 	RobotomyTest();

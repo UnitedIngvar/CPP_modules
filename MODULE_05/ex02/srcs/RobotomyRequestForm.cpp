@@ -1,5 +1,4 @@
 #include "RobotomyRequestForm.hpp"
-#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm() :
 	Form("RobotomyRequestForm", 72, 45),
@@ -9,26 +8,26 @@ RobotomyRequestForm::RobotomyRequestForm() :
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) :
-	Form(target, 72, 45),
+	Form("RobotomyRequestForm", 72, 45),
 	_target(target)
 {
 
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy) :
-	Form(copy._target, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) :
+	Form(other.GetName(), 72, 45)
 {
-	*this = copy;
+	*this = other;
 }
 
-RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const &form)
+RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const &other)
 {
-	if (this == &form)
+	if (this == &other)
 	{
 		return *this;
 	}
 
-	this->_target = form._target;
+	this->_target = other._target;
 	return *this;
 }
 

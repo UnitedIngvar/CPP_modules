@@ -1,4 +1,6 @@
 #include "FormMethodMap.hpp"
+#include "Intern.hpp"
+#include <iostream>
 
 FormMethodMap::FormMethodMap() :
 	_form_name("Undefined"),
@@ -7,7 +9,7 @@ FormMethodMap::FormMethodMap() :
 
 }
 
-FormMethodMap::FormMethodMap(std::string const &formName, factory_method const factoryMethod) :
+FormMethodMap::FormMethodMap(std::string const &formName, factory_method const &factoryMethod) :
 	_form_name(formName),
 	_factory_method(factoryMethod)
 {
@@ -21,22 +23,24 @@ FormMethodMap::FormMethodMap(FormMethodMap const &other) :
 
 }
 
-bool						FormMethodMap::AppliesTo(std::string request) const
+bool					FormMethodMap::AppliesTo(std::string formName) const
 {
-
+	return !(formName.compare(_form_name));
 }
 
-factory_method				FormMethodMap::GetFactoryMethod() const
+factory_method const	&FormMethodMap::GetFactoryMethod() const
 {
 	return _factory_method;
 }
 
-FormMethodMap	&FormMethodMap::operator=(FormMethodMap const &other)
+FormMethodMap			&FormMethodMap::operator=(FormMethodMap const &other)
 {
+	(void)other;
 
+	return *this;
 }
 
-~FormMethodMap()
+FormMethodMap::~FormMethodMap()
 {
 
 }
