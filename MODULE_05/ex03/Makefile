@@ -1,4 +1,4 @@
-NAME			= Form_Hell
+NAME			= Intern
 
 DIR				= srcs
 HEADERS_DIR		= includes/

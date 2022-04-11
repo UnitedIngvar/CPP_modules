@@ -1,6 +1,5 @@
 #include "FormMethodMap.hpp"
 #include "Intern.hpp"
-#include <iostream>
 
 FormMethodMap::FormMethodMap() :
 	_form_name("Undefined"),

@@ -67,7 +67,7 @@ void				Bureaucrat::SignForm(Form &form) const
 	if (form.GetIsSigned())
 	{
 		std::cout << _name << " couldn’t sign form " << form.GetName() <<
-		" because is already signed." << std::endl;
+		" because it is already signed." << std::endl;
 
 		return;
 	}

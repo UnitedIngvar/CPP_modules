@@ -45,6 +45,12 @@ int main(int argc, char** argv)
 		return 1;
 	}
 	outdata.open(filename.append(".replace"));
+	if (!outdata)
+	{
+		std::cerr << "Error. file " << filename.append(".replace") << " could not be opened. Stop."
+			<< std::endl;
+		return 1;
+	}
 	while (std::getline(indata, line))
 	{
 		line = ReplceEntries(line, entry, replacement);

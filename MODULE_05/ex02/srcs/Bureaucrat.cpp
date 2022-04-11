@@ -84,7 +84,7 @@ void				Bureaucrat::SignForm(Form &form) const
 	std::cout << _name << " signed " << form.GetName() << std::endl;
 }
 
-void				Bureaucrat::ExecuteForm(Form const &form)
+void				Bureaucrat::ExecuteForm(Form const &form) const
 {
 	try
 	{

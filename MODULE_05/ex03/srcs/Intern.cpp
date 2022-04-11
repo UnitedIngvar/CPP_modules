@@ -40,10 +40,8 @@ Form		&Intern::MakeForm(std::string const &name, std::string const &target)
 			factory_method method =
 				form_method_maps[i]->GetFactoryMethod();
 
-			std::cout << method << std::endl;
-
 			Form &form = (this->*method)(target);
-			std::cout << "Intern creates " << form << std::endl;
+			std::cout << "Intern creates " << form;
 			return form;
 		}
 	}

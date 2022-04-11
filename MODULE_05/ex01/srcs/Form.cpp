@@ -92,7 +92,7 @@ Form::~Form()
 
 std::ostream	&operator<<(std::ostream &out, Form const &form)
 {
-	std::string	isSigned = form.GetIsSigned() ? " is signed" : " is not signed";
+	std::string	isSigned = form.GetIsSigned() ? ", signed" : ", not signed";
 
 	out << "Form " << form.GetName() << " with execute grade "
 		<< form.GetExecuteGrade() << " and sign grade " << form.GetSignGrade()

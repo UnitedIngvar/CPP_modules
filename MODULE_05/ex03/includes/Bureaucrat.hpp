@@ -20,7 +20,7 @@ public:
 	std::string const	&GetName() const;
 	int					GetGrade() const;
 	void				SignForm(Form &form) const;
-	void				ExecuteForm(Form const &form);
+	void				ExecuteForm(Form const &form) const;
 	void				Increase();
 	void				Decrease();
 
