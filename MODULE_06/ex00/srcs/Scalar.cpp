@@ -16,7 +16,7 @@ Scalar::Scalar(Scalar const &other)
 Scalar::Scalar(std::string literal)
 {
 	DetermineType(literal);
-	StoreValue(literal);
+	ParseValue(literal);
 }
 
 bool	Scalar::IsNumber(std::string const &str) const
@@ -34,47 +34,101 @@ bool	Scalar::IsNumber(std::string const &str) const
 
 void		Scalar::PrintInt() const
 {
-	int integer;
-	std::memcpy(&integer, &_bytes, sizeof(integer));
-	if (integer > 256 || integer < 0)
+	std::cout << "____________PRINTING AN INT!!!_____________" << std::endl << std::endl;
+	int i;
+	std::memcpy(&i, &_bytes, sizeof(i));
+
+	if (i > 256 || i < 0)
 		std::cout << "char: impossible" << std::endl;
-	else if (integer > 126 || integer < 32)
+	else if (i > 126 || i < 32)
 		std::cout << "char: Non displayable" << std::endl;
 	else
-		std::cout << "char: '" << static_cast<char>(integer) << "'" << std::endl;
+		std::cout << "char: '" << static_cast<char>(i) << "'" << std::endl;
 
-	std::cout << "int: " << integer << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(integer) << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(integer) << std::endl;
+	std::cout << "int: " << i << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(_precision) << static_cast<float>(i) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(_precision) << static_cast<double>(i) << std::endl;
+	std::cout << std::endl << "_____________________________" << std::endl << std::endl;
 }
 
 void		Scalar::PrintChar() const
 {
+	std::cout << "_____PRINTING A CHAR!!!_________" << std::endl << std::endl;
+	char c;
+	std::memcpy(&c, &_bytes, sizeof(c));
 
+	std::cout << "char: '" << c << "'" << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(_precision) << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(_precision) << static_cast<double>(c) << std::endl;
+	std::cout << std::endl << "______________________________" << std::endl << std::endl;
 }
 
 void		Scalar::PrintFloat() const
 {
+	std::cout << "_________PRINTING A FLOAT!!!_________" << std::endl << std::endl;
+	float f;
+	std::memcpy(&f, &_bytes, sizeof(f));
 
+	if (f > 256 || f < 0 || f != f)
+		std::cout << "char: impossible" << std::endl;
+	else if (f > 126 || f < 32)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
+
+	if (f > INT_MAX || f < INT_MIN || f != f)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(f) << std::endl;
+
+	std::cout << "float: " << std::fixed << std::setprecision(_precision) << f << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(_precision) << static_cast<double>(f) << std::endl;
+	std::cout << std::endl << "_______________________" << std::endl << std::endl;
 }
 
 void		Scalar::PrintDouble() const
 {
+	std::cout << "__________________PRINTING A DOUBLE!!!________________" << std::endl << std::endl;
+	double d;
+	std::memcpy(&d, &_bytes, sizeof(d));
 
+	if (d > 256 || d < 0 || d != d)
+		std::cout << "char: impossible" << std::endl;
+	else if (d > 126 || d < 32)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
+
+	if (d > INT_MAX || d < INT_MIN || d != d)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(d) << std::endl;
+
+	if ((d > __FLT_MAX__ || d < __FLT_MIN__))
+		std::cout << "float: impossible" << std::endl;
+	else
+		std::cout << "float: " << std::fixed << std::setprecision(_precision) << static_cast<float>(d) << "f" << std::endl;
+
+	std::cout << "double: " << std::fixed << std::setprecision(_precision) << d << std::endl;
+
+	std::cout << std::endl << "______________________________" << std::endl << std::endl;
 }
 
-void		Scalar::StoreValue(std::string const &literal)
+void		Scalar::ParseValue(std::string const &literal)
 {
 	switch (_type)
 	{
 		case t_int:
 		{
+			_precision = 1;
 			int tmp = std::stoi(literal);
 			std::memcpy(&_bytes, &tmp, sizeof(tmp));
 			break;
 		}
 		case t_char:
 		{
+			_precision = 1;
 			char tmp = literal.at(0);
 			std::memcpy(&_bytes, &tmp, sizeof(tmp));
 			break;
@@ -82,12 +136,14 @@ void		Scalar::StoreValue(std::string const &literal)
 		case t_float:
 		{
 			float tmp = std::stof(literal);
+			_precision = literal.length() - literal.find('.') - 2;
 			std::memcpy(&_bytes, &tmp, sizeof(tmp));
 			break;
 		}
 		case t_double:
 		{
 			double tmp = std::stod(literal);
+			_precision = literal.length() - literal.find('.') - 1;
 			std::memcpy(&_bytes, &tmp, sizeof(tmp));
 			break;
 		}
@@ -135,8 +191,34 @@ Scalar		&Scalar::operator=(Scalar const &other)
 
 void		Scalar::Print() const
 {
-	if (_type == t_int)
-		PrintInt();
+	switch (_type)
+	{
+		case t_int:
+		{
+			PrintInt();
+			break;
+		}
+		case t_char:
+		{
+			PrintChar();
+			break;
+		}
+		case t_float:
+		{
+			PrintFloat();
+			break;
+		}
+		case t_double:
+		{
+			PrintDouble();
+			break;
+		}
+		default:
+		{
+			std::cout << "Can't display the value" << std::endl;
+			break;
+		}
+	}
 }
 
 Scalar::~Scalar()
