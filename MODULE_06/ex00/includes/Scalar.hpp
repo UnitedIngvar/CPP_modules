@@ -2,7 +2,7 @@
 # define SCALAR_HPP
 
 # include <string>
-# include "Types.hpp"
+# include "LitTypes.hpp"
 
 class Scalar
 {

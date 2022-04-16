@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	std::string i = "23";
+	std::string i = "124";
 	std::string f = "23.34643747567f";
 	std::string d = "4.3536464";
 	std::string c = "g";
