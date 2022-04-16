@@ -1,4 +1,4 @@
-NAME			= Scalar
+NAME			= Serializing
 
 DIR				= srcs
 HEADERS_DIR		= includes/

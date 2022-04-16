@@ -4,7 +4,7 @@ int main(void)
 {
 	std::string i = "23";
 	std::string f = "23.34643747567f";
-	std::string d = "4353.3536464";
+	std::string d = "4.3536464";
 	std::string c = "g";
 	std::string inff = "+inff";
 	std::string inf = "-inf";
