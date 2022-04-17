@@ -2,16 +2,14 @@
 #include <iostream>
 #include "Data.hpp"
 
-template <typename T>
-uintptr_t	serialize(T *ptr)
+uintptr_t	serialize(Data *ptr)
 {
 	return reinterpret_cast<uintptr_t>(ptr);
 }
 
-template <typename T>
-T		*deserialize(uintptr_t raw)
+Data		*deserialize(uintptr_t raw)
 {
-	return reinterpret_cast<T*>(raw);
+	return reinterpret_cast<Data*>(raw);
 }
 
 int 	main()
@@ -27,8 +25,8 @@ int 	main()
 	std::cout << "dtat.str2: "<< data.str2 << std::endl << std::endl
 		<< std::endl;
 
-	uintptr_t ptr = serialize<Data>(&data);
-	Data *deserialized_data = deserialize<Data>(ptr);
+	uintptr_t ptr = serialize(&data);
+	Data *deserialized_data = deserialize(ptr);
 
 	std::cout << "before serializing:" << std::endl;
 	std::cout << "dtat.n: "<< deserialized_data->n << std::endl;

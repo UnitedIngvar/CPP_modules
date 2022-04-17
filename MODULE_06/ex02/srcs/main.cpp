@@ -16,4 +16,7 @@ int main(void)
 	identify(*someConcrete1);
 	identify(*someConcrete2);
 	identify(*someConcrete3);
+	delete someConcrete1;
+	delete someConcrete2;
+	delete someConcrete3;
 }

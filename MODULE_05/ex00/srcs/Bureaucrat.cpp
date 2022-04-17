@@ -19,7 +19,8 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade) :
 {
 	if (grade > 150)
 	{
-		throw GradeTooLowException();
+		GradeTooLowException exception = GradeTooLowException(grade);
+		throw exception;
 	}
 	if (grade < 1)
 	{
@@ -54,7 +55,7 @@ void				Bureaucrat::Decrease()
 {
 	if (_grade + 1 > 150)
 	{
-		throw Bureaucrat::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException(_grade);
 	}
 
 	_grade++;

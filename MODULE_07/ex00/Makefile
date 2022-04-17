@@ -1,4 +1,4 @@
-NAME			= Reflection
+NAME			= A_Few_functions
 
 DIR				= srcs
 HEADERS_DIR		= includes/
@@ -8,7 +8,7 @@ OBJECTS			= $(patsubst %.cpp, %.o, $(SRCS))
 D_FILES			= ${patsubst %.cpp, %.d, ${SRCS}}
 
 CC		= c++
-CFLAGS	=	-Werror -Wall -Wextra -std=c++98
+CFLAGS	= -Werror -Wall -Wextra -std=c++98
 
 all	: 	$(NAME)
 
