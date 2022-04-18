@@ -70,14 +70,14 @@ void		Scalar::PrintFloat() const
 	float f;
 	std::memcpy(&f, &_bytes, sizeof(f));
 
-	if (f > 256 || f < 0 || f != f)
+	if (f > 256 || f < 0)
 		std::cout << "char: impossible" << std::endl;
 	else if (f > 126 || f < 32)
 		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
 
-	if (f > INT_MAX || f < INT_MIN || f != f)
+	if (f > INT_MAX || f < INT_MIN)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(f) << std::endl;
@@ -93,14 +93,14 @@ void		Scalar::PrintDouble() const
 	double d;
 	std::memcpy(&d, &_bytes, sizeof(d));
 
-	if (d > 256 || d < 0 || d != d)
+	if (d > 256 || d < 0)
 		std::cout << "char: impossible" << std::endl;
 	else if (d > 126 || d < 32)
 		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 
-	if (d > INT_MAX || d < INT_MIN || d != d)
+	if (d > INT_MAX || d < INT_MIN)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
