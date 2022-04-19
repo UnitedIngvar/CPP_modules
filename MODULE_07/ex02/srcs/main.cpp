@@ -1,4 +1,5 @@
 #include "Array.hpp"
+#include "Awesome.hpp"
 #include <iostream>
 
 void	TestExceptions()
@@ -66,12 +67,15 @@ void	TestOperators()
 		std::cout << "after assignment: arrayToCopy[" << i <<  "]: " << (int)arrayToCopy[i] << std::endl;
 	}
 
+	Array<int> const constArray(size);
+	std::cout << std::endl << "constArray[0]: " << (int)constArray[0] << std::endl;
+	//(int)constArray[0] = 10;
 	std::cout << std::endl
 	<< "_____________________________________" << std::endl
 		<< std::endl;
 }
 
-void	TestAccessors()
+void	TestAccessorsAndConstructors()
 {
 	std::cout
 	<< "_________TEST___ACCESSORS____________" << std::endl
@@ -82,6 +86,33 @@ void	TestAccessors()
 
 	Array<int> array(size);
 	std::cout << "array.size(): " << array.size() << std::endl;
+
+	Array<int> emptyArray;
+	std::cout << "emptyArray.size(): " << emptyArray.size() << std::endl;
+
+	std::cout << std::endl
+	<< "_____________________________________" << std::endl
+		<< std::endl;
+}
+
+
+void	TestComplexTypes()
+{
+	std::cout
+	<< "_________TEST__COMPLEX__TYPES________" << std::endl
+		<< std::endl;
+	int size = 10;
+
+	std::cout << "Size: " << size << std::endl;
+
+	Array<Awesome> array(size);
+	std::cout << "array.size(): " << array.size() << std::endl;
+
+	std::cout << "array[0]: " << (Awesome)array[0] << std::endl;
+	std::cout << "array[1]: " << (Awesome)array[1] << std::endl;
+	std::cout << "array[2]: " << (Awesome)array[2] << std::endl;
+	std::cout << "array[3]: " << (Awesome)array[3] << std::endl;
+
 	std::cout << std::endl
 	<< "_____________________________________" << std::endl
 		<< std::endl;
@@ -89,7 +120,8 @@ void	TestAccessors()
 
 int main()
 {
-	TestAccessors();
+	TestAccessorsAndConstructors();
 	TestOperators();
 	TestExceptions();
+	TestComplexTypes();
 }

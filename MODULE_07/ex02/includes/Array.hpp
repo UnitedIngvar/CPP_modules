@@ -18,9 +18,10 @@ public:
 
 	Array	&operator=(Array const &other);
 
-	T	&operator[](int index);
+	T		&operator[](int index);
+	T const	&operator[](int index) const;
 
-	int		size();
+	int		size() const;
 
 	~Array();
 };
@@ -68,7 +69,16 @@ T		&Array<T>::operator[](int index)
 }
 
 template<typename T>
-int		Array<T>::size()
+T const	&Array<T>::operator[](int index) const
+{
+	if (index >= _size || index < 0)
+		throw std::exception();
+
+	return _array[index];
+}
+
+template<typename T>
+int		Array<T>::size() const
 {
 	return _size;
 }
