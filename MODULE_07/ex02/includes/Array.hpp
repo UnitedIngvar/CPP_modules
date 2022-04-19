@@ -36,7 +36,8 @@ Array<T>::Array()
 template<typename T>
 Array<T>::Array(Array<T> const &other)
 {
-	this = other;
+	_array = new T[other._size];
+	*this = other;
 }
 
 template<typename T>
