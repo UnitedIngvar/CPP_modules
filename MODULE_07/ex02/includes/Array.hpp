@@ -56,6 +56,8 @@ Array<T>	&Array<T>::operator=(Array<T> const &other)
 	}
 
 	_size = other._size;
+	delete[] _array;
+	_array = new T[other._size];
 	std::memcpy(_array, other._array, sizeof(T) * other._size);
 	return *this;
 }
