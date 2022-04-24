@@ -29,8 +29,8 @@ public:
 template<typename T>
 Array<T>::Array()
 {
-	_array = new T[1];
-	_size = 1;
+	_array = new T[0];
+	_size = 0;
 }
 
 template<typename T>
