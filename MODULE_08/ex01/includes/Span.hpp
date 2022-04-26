@@ -9,10 +9,8 @@ class Span
 {
 private:
 	unsigned long	_max_size;
-	std::list<int>	_vector;
+	std::list<int>	_values;
 	bool			_sorted;
-
-	unsigned int	abs(unsigned int num);
 
 public:
 	Span();
@@ -21,8 +19,9 @@ public:
 
 	Span	&operator=(Span const &other);
 
-	template<class TContainer>
-	void			addNumber(typename TContainer::const_iteartor &itBegin, typename TContainer::const_iteartor &itEnd);
+
+	template<class TIterator>
+	void			addNumber(TIterator itBegin, TIterator itEnd);
 	void			addNumber(int num);
 	unsigned long	shortestSpan();
 	unsigned long	longestSpan();
@@ -30,23 +29,18 @@ public:
 	~Span();
 };
 
-template<class TContainer>
-void	Span::addNumber(typename TContainer::const_iteartor &itBegin, typename TContainer::const_iteartor &itEnd)
+template<class TIterator>
+void	Span::addNumber(TIterator itBegin, TIterator itEnd)
 {
-	size_t distance = std::distance(itBegin, itEnd);
+	typename std::iterator_traits<TIterator>::difference_type distance = std::distance(itBegin, itEnd);
 
-	if (distance < 0)
-	{
-		throw std::invalid_argument("error occured while adding a range of numbers to the span. Bad iterators!");
-	}
-
-	if (_vector.size() + distance > _max_size)
+	if (_values.size() + distance > _max_size)
 	{
 		throw std::range_error("adding too many elements to span");
 	}
 
 	_sorted = false;
-	_vector.insert(_vector.end(), itBegin, itEnd);
+	_values.insert(_values.end(), itBegin, itEnd);
 }
 
 #endif

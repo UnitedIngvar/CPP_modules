@@ -6,7 +6,7 @@ Span::Span()
 {
 	_max_size = 0;
 	_sorted = false;
-	_vector = std::list<int>();
+	_values = std::list<int>();
 }
 
 Span::Span(Span const &other)
@@ -18,49 +18,39 @@ Span::Span(int size)
 {
 	_max_size = size;
 	_sorted = false;
-	_vector = std::list<int>();
-}
-
-unsigned int	Span::abs(unsigned int num)
-{
-	if (num < 0)
-	{
-		return -num;
-	}
-
-	return num;
+	_values = std::list<int>();
 }
 
 Span			&Span::operator=(Span const &other)
 {
 	_max_size = other._max_size;
-	_vector = other._vector;
+	_values = other._values;
 	return (*this);
 }
 
 void			Span::addNumber(int num)
 {
-	if (_vector.size() == _max_size)
+	if (_values.size() == _max_size)
 	{
-		throw std::range_error("adding too many elements to span");
+		throw std::range_error("excpetion: adding too many elements to span");
 	}
 
 	_sorted = false;
-	_vector.push_back(num);
+	_values.push_back(num);
 }
 
 unsigned long	Span::shortestSpan()
 {
-	if (_vector.size() < 2)
+	if (_values.size() < 2)
 	{
-		throw std::length_error("need minimum 2 elements to find the shortest span");
+		throw std::length_error("excpetion: need minimum 2 elements to find the shortest span");
 	}
 
-	_vector.sort();
+	_values.sort();
 
-	std::list<int>::iterator next = _vector.begin();
+	std::list<int>::iterator next = _values.begin();
 	std::list<int>::iterator iter = next++;
-	std::list<int>::iterator end = _vector.end();
+	std::list<int>::iterator end = _values.end();
 
 	long min = std::abs(static_cast<long>(*(next++)) - static_cast<long>(*(iter++)));
 	long tmp;
@@ -76,13 +66,13 @@ unsigned long	Span::shortestSpan()
 
 unsigned long	Span::longestSpan()
 {
-	if (_vector.size() < 2)
+	if (_values.size() < 2)
 	{
-		throw std::length_error("need minimum 2 elements to find the longest span");
+		throw std::length_error("excpetion: need minimum 2 elements to find the longest span");
 	}
 
-	long min = *std::min_element(_vector.begin(), _vector.end());
-	long max = *std::max_element(_vector.begin(), _vector.end());
+	long min = *std::min_element(_values.begin(), _values.end());
+	long max = *std::max_element(_values.begin(), _values.end());
 
 	return max - min;
 }
