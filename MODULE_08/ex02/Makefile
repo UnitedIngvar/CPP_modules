@@ -1,4 +1,4 @@
-NAME			= Span
+NAME			= MutantStack
 
 DIR				= srcs
 HEADERS_DIR		= includes/

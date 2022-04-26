@@ -5,7 +5,6 @@
 Span::Span()
 {
 	_max_size = 0;
-	_sorted = false;
 	_values = std::list<int>();
 }
 
@@ -17,7 +16,6 @@ Span::Span(Span const &other)
 Span::Span(int size)
 {
 	_max_size = size;
-	_sorted = false;
 	_values = std::list<int>();
 }
 
@@ -35,7 +33,6 @@ void			Span::addNumber(int num)
 		throw std::range_error("excpetion: adding too many elements to span");
 	}
 
-	_sorted = false;
 	_values.push_back(num);
 }
 
@@ -64,7 +61,7 @@ unsigned long	Span::shortestSpan()
 	return (min);
 }
 
-unsigned long	Span::longestSpan()
+unsigned long	Span::longestSpan() const
 {
 	if (_values.size() < 2)
 	{

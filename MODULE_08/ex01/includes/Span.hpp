@@ -10,7 +10,6 @@ class Span
 private:
 	unsigned long	_max_size;
 	std::list<int>	_values;
-	bool			_sorted;
 
 public:
 	Span();
@@ -24,7 +23,7 @@ public:
 	void			addNumber(TIterator itBegin, TIterator itEnd);
 	void			addNumber(int num);
 	unsigned long	shortestSpan();
-	unsigned long	longestSpan();
+	unsigned long	longestSpan() const;
 
 	~Span();
 };
@@ -39,7 +38,6 @@ void	Span::addNumber(TIterator itBegin, TIterator itEnd)
 		throw std::range_error("adding too many elements to span");
 	}
 
-	_sorted = false;
 	_values.insert(_values.end(), itBegin, itEnd);
 }
 
