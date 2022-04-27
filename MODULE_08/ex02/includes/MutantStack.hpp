@@ -21,7 +21,6 @@ public:
 		*this = copy;
 	}
 
-
 	MutantStack	&operator=(MutantStack &other)
 	{
 		std::stack<T>::operator=(other);
