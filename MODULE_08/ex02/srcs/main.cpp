@@ -2,7 +2,7 @@
 #include <iostream>
 #include <list>
 
-void	IteratorsTest()
+void	iteratorsTest()
 {
 	std::cout
 		<< "_________ITERATORS_TESTS____________" << std::endl
@@ -28,7 +28,42 @@ void	IteratorsTest()
 		<< std::endl;
 }
 
-void	SubjectTest()
+void	operatorsTest()
+{
+	std::cout
+		<< "_________OPERATORS_TESTS____________" << std::endl
+		<< std::endl;
+
+	MutantStack<int> stack;
+	std::cout << "pushing 1 2 3 4 in the mutant stack" << std::endl;
+	stack.push(1);
+	stack.push(2);
+	stack.push(3);
+	stack.push(4);
+
+	std::cout << "copying the original stack to the new one" << std::endl;
+	MutantStack<int> stack_copy = stack;
+
+	std::cout << "Printing the numbers of the original stack..." << std::endl;
+	for (MutantStack<int>::iterator i = stack.begin(); i != stack.end(); i++)
+	{
+		std::cout << *i << " ";
+	}
+	std::cout << std::endl;
+
+	std::cout << "Printing the numbers of the copy stack..." << std::endl;
+	for (MutantStack<int>::iterator i = stack_copy.begin(); i != stack_copy.end(); i++)
+	{
+		std::cout << *i << " ";
+	}
+	std::cout << std::endl;
+
+	std::cout
+		<< "________________________________" << std::endl
+		<< std::endl;
+}
+
+void	subjectTest()
 {
 	std::cout
 		<< "_________SUBJECT_TESTS____________" << std::endl
@@ -90,6 +125,7 @@ void	SubjectTest()
 
 int main()
 {
-	IteratorsTest();
-	SubjectTest();
+	iteratorsTest();
+	subjectTest();
+	operatorsTest();
 }
