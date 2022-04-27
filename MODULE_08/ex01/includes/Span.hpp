@@ -18,7 +18,6 @@ public:
 
 	Span	&operator=(Span const &other);
 
-
 	template<class TIterator>
 	void			addNumber(TIterator itBegin, TIterator itEnd);
 	void			addNumber(int num);

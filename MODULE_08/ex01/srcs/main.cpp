@@ -128,7 +128,7 @@ void	smallRandomTest()
 		<< std::endl;
 
 	int size = 4;
-	int *array = new int[size];
+	int array[size];
 
 	Span span = Span(size);
 	for (int i = 0; i < size; i++)
@@ -183,6 +183,26 @@ void	addNumbersTest()
 		<< std::endl;
 }
 
+void	subjectTests()
+{
+	std::cout
+		<< "________SUBJECT_TEST________" << std::endl
+		<< std::endl;
+
+	Span sp = Span(5);
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
+
+	std::cout
+		<< "________________________________" << std::endl
+		<< std::endl;
+}
+
 int	main()
 {
 	std::srand(0);
@@ -191,4 +211,5 @@ int	main()
 	smallRandomTest();
 	exceptionsTest();
 	addNumbersTest();
+	subjectTests();
 }
